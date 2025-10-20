@@ -8,17 +8,50 @@ format: typst
 ## **Part 0: libraries**
 
 ```{r}
+library("stringr")
+library("dplyr")
+library("tidyverse")
 
 ```
 
 ## **Part 1:** **Defining Research Question**
 
-Chosen Question:
+Chosen Question: Do states with higher renewable energy usage tend to have more electric vehicle (EV) registrations?
 
 ## **Part 2: Data Preparation and Cleaning**
 
 ```{r}
+setwd("~/Downloads/school/STAT 133/ev-power-jasminehou07/data") 
+# AV ENERGY DATA
+AvgEnergyPrice <- read.csv("av-energy-price-2021-2023.csv")
 
+# convert to tibble (use the first column; it isn't named 'col' yet)
+AvgEnergyPrice <- tibble(col = AvgEnergyPrice[[1]])
+
+# delete the first two junk lines
+AvgEnergyPrice <- AvgEnergyPrice[-c(1,2), ]
+
+# remove the outer quotes from each line
+AvgEnergyPrice <- AvgEnergyPrice %>%
+  mutate(col = str_remove_all(col, '^"|"$'))
+
+# split the single column into 4 columns
+AvgEnergyPrice <- AvgEnergyPrice %>%
+  separate("col", into = c("state", "avgprice_2021", "avgprice_2022", "avgprice_2023"), sep = ",") %>%
+  mutate(across(everything(), str_trim))
+
+# clean numbers, keep only digits and decimal points
+AvgEnergyPrice <- AvgEnergyPrice %>%
+  mutate(across(starts_with("avgprice_"),
+                ~ str_replace_all(.x, "[^0-9.]", "") %>%
+                  as.numeric()))
+
+# change state abbreviations to full names
+ AvgEnergyPrice <- AvgEnergyPrice %>%
++   mutate(state = state.name[match(state, state.abb)])
+
+# Overwrite the same CSV file
+write_csv(AvgEnergyPrice, "AvgEnergyPrice.csv")
 ```
 
 ## **Part 3: Joining / Pivoting Datasets for Analysis**
