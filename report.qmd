@@ -279,6 +279,32 @@ Renewable_Use2023_final <- Renewable_Use2023 %>%
   )
 
 write_csv(Renewable_Use2023_final, "Renewable_Use2023_final.csv")
+
+#joining tables
+#renewable
+R2021 <- read_csv("Renewable_Use2021_final.csv") %>% rename_with(~paste0(.x, "_2021"), -State)
+R2022 <- read_csv("Renewable_Use2022_final.csv") %>% rename_with(~paste0(.x, "_2022"), -State)
+R2023 <- read_csv("Renewable_Use2023_final.csv") %>% rename_with(~paste0(.x, "_2023"), -State)
+
+# join all by state
+Renewable_All <- R2021 %>%
+  left_join(R2022, by = "State") %>%
+  left_join(R2023, by = "State")
+
+write_csv(Renewable_All, "Renewable_All.csv")
+
+#renewable
+T2021 <- read_csv("Total_Use2021_final.csv") %>% rename_with(~paste0(.x, "_2021"), -State)
+T2022 <- read_csv("Total_Use2022_final.csv") %>% rename_with(~paste0(.x, "_2022"), -State)
+T2023 <- read_csv("Total_Use2023_final.csv") %>% rename_with(~paste0(.x, "_2023"), -State)
+
+# join all by state
+Total_Use_All <- R2021 %>%
+  left_join(R2022, by = "State") %>%
+  left_join(R2023, by = "State")
+
+write_csv(Total_Use_All, "Total_Use_All.csv")
+
 ```
 
 ## **Part 4: Mapping Visualization**
