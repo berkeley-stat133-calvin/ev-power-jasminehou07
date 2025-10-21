@@ -43,14 +43,18 @@ AvgEnergyPrice <- AvgEnergyPrice %>%
 # clean numbers, keep only digits and decimal points
 AvgEnergyPrice <- AvgEnergyPrice %>%
   mutate(across(starts_with("Avgprice_"),
-                ~ str_replace_all(.x, "[^0-9.]", "") %>%
-                  as.numeric()))
-
-# change state abbreviations to full names but ignore the last row
-AvgEnergyPrice <- AvgEnergyPrice %>%
-  mutate(State = if_else(
-    row_number() == n(), State, state.name[match(State, state.abb)]
+    ~ .x %>%
+      str_replace_all(",", "") %>%
+      str_extract("\\d*\\.?\\d+") %>%
+      str_replace("^\\.", "0.") %>%
+      na_if("") %>%
+      as.numeric()
   ))
+
+# change state abbreviations to full names but ignore the last row and DC
+AvgEnergyPrice <- AvgEnergyPrice %>%
+  mutate(State = case_when(
+    row_number() == 8 ~ "District of Columbia", row_number() == n() ~ State, TRUE ~ state.name[match(State, state.abb)]))
 
 # create csv file
 write_csv(AvgEnergyPrice, "AvgEnergyPrice.csv")
@@ -89,11 +93,10 @@ Renewable_Use2021 <- Renewable_Use2021 %>%
                 ~ str_replace_all(.x, "[^0-9.]", "") %>%
                   as.numeric()))
 
-# change state abbreviations to full names but ignore last 5 rows
+# change state abbreviations to full names but ignore last 5 rows and DC
 Renewable_Use2021 <- Renewable_Use2021 %>%
-  mutate(State = if_else(
-    row_number() > n() - 5, State, state.name[match(State, state.abb)]
-  ))
+  mutate(State = case_when(
+    row_number() %in% 36:40 ~ "District of Columbia", row_number() > n() - 5 ~ State, TRUE ~ state.name[match(State, state.abb)]))
 
 # create csv file
 write_csv(Renewable_Use2021, "Renewable_Use2021.csv")
@@ -108,16 +111,15 @@ Renewable_Use2022 <- as_tibble(Renewable_Use2022)
 colnames(Renewable_Use2022)[3] <- "Usage"
 
 # clean numbers, keep only digits and decimal points
-Renewable_Use2021 <- Renewable_Use2021 %>%
+Renewable_Use2022 <- Renewable_Use2022 %>%
   mutate(across("Usage",
                 ~ str_replace_all(.x, "[^0-9.]", "") %>%
                   as.numeric()))
 
-# change state abbreviations to full names but ignore last 5 rows
+# change state abbreviations to full names but ignore last 5 rows and DC
 Renewable_Use2022 <- Renewable_Use2022 %>%
-  mutate(State = if_else(
-    row_number() > n() - 5, State, state.name[match(State, state.abb)]
-  ))
+  mutate(State = case_when(
+    row_number() %in% 36:40 ~ "District of Columbia", row_number() > n() - 5 ~ State, TRUE ~ state.name[match(State, state.abb)]))
 
 # create csv file
 write_csv(Renewable_Use2021, "Renewable_Use2022.csv")
@@ -141,11 +143,10 @@ Renewable_Use2023 <- Renewable_Use2023 %>%
 Renewable_Use2023 <- Renewable_Use2023 %>%
   mutate(State = toupper(State))
 
-# change state abbreviations to full names but ignore last 5 rows
+# change state abbreviations to full names but ignore last 5 rows & DC
 Renewable_Use2023 <- Renewable_Use2023 %>%
-  mutate(State = if_else(
-    row_number() > n() - 5, State, state.name[match(State, state.abb)]
-  ))
+  mutate(State = case_when(
+    row_number() %in% 36:40 ~ "District of Columbia", row_number() > n() - 5 ~ State, TRUE ~ state.name[match(State, state.abb)]))
 
 # create csv file
 write_csv(Renewable_Use2023, "Renewable_Use2023.csv")
@@ -153,9 +154,14 @@ write_csv(Renewable_Use2023, "Renewable_Use2023.csv")
 #TOTAL USE 2021 DATA
 Total_Use2021 <- read.csv("total-use-2021.csv")
 
+Total_Use2021 <- as_tibble(Total_Use2021)
+
 #tidy up Energy_Source rows
 Total_Use2021$Energy_Source <- Total_Use2021$Energy_Source %>%
   str_replace_all("_", " ") %>%
+  str_replace_all("-", " ") %>%
+  str_replace_all("([a-z])([A-Z])", "\\1 \\2") %>%
+  str_remove_all("\\(.*?\\)") %>% 
   str_to_lower() %>%
   str_to_title() %>%
   str_replace_all("[^A-Za-z ]", "")
@@ -163,6 +169,7 @@ Total_Use2021$Energy_Source <- Total_Use2021$Energy_Source %>%
 #change column names to state
 col_names <- names(Total_Use2021)
 col_names[2:(length(col_names) - 1)] <- state.name[match(col_names[2:(length(col_names) - 1)], state.abb)]
+col_names[9] <- "District of Columbia"
 names(Total_Use2021) <- col_names
 
 #new csv
@@ -170,6 +177,8 @@ write_csv(Total_Use2021, "Total_Use2021.csv")
 
 #TOTAL USE 2022 DATA
 Total_Use2022 <- read.csv("total-use-2022.csv")
+
+Total_Use2022 <- as_tibble(Total_Use2022)
 
 #tidy up Energy_Source rows
 Total_Use2022$Energy_Source <- Total_Use2022$Energy_Source %>%
@@ -183,6 +192,7 @@ Total_Use2022$Energy_Source <- Total_Use2022$Energy_Source %>%
 #change column names to state
 col_names <- names(Total_Use2022)
 col_names[2:(length(col_names) - 1)] <- state.name[match(col_names[2:(length(col_names) - 1)], state.abb)]
+col_names[9] <- "District of Columbia"
 names(Total_Use2022) <- col_names
 
 #new csv
@@ -190,6 +200,8 @@ write_csv(Total_Use2022, "Total_Use2022.csv")
 
 #TOTAL USE 2023 DATA
 Total_Use2023 <- read.csv("total-use-2023.csv")
+
+Total_Use2023 <- as_tibble(Total_Use2023)
 
 #tidy up Energy_Source rows
 Total_Use2023$Energy_Source <- Total_Use2023$Energy_Source %>%
@@ -204,6 +216,7 @@ Total_Use2023$Energy_Source <- Total_Use2023$Energy_Source %>%
 #change column names to state
 col_names <- names(Total_Use2023)
 col_names[2:(length(col_names) - 1)] <- state.name[match(col_names[2:(length(col_names) - 1)], state.abb)]
+col_names[9] <- "District of Columbia"
 names(Total_Use2023) <- col_names
 
 #new csv
@@ -213,7 +226,59 @@ write_csv(Total_Use2023, "Total_Use2023.csv")
 ## **Part 3: Joining / Pivoting Datasets for Analysis**
 
 ```{r}
+#pivot total use 2021
+num_cols <- names(Total_Use2021)[sapply(Total_Use2021, is.numeric)]
+num_cols <- setdiff(num_cols, "Energy_Source")
 
+Total_Use2021_long <- pivot_longer(Total_Use2021, cols = -Energy_Source, names_to = "State", values_to = "Value")
+
+Total_Use2021_final <- pivot_wider(Total_Use2021_long, names_from = Energy_Source, values_from = Value)
+write_csv(Total_Use2021_final, "Total_Use2021_final.csv")
+
+#pivot total use 2022
+num_cols <- names(Total_Use2022)[sapply(Total_Use2022, is.numeric)]
+num_cols <- setdiff(num_cols, "Energy_Source")
+
+Total_Use2022_long <- pivot_longer(Total_Use2022, cols = -Energy_Source, names_to = "State", values_to = "Value")
+
+Total_Use2022_final <- pivot_wider(Total_Use2022_long, names_from = Energy_Source, values_from = Value)
+write_csv(Total_Use2022_final, "Total_Use2022_final.csv")
+
+#pivot total use 2023
+num_cols <- names(Total_Use2023)[sapply(Total_Use2023, is.numeric)]
+num_cols <- setdiff(num_cols, "Energy_Source")
+
+Total_Use2023_long <- pivot_longer(Total_Use2023, cols = -Energy_Source, names_to = "State", values_to = "Value")
+
+Total_Use2023_final <- pivot_wider(Total_Use2023_long, names_from = Energy_Source, values_from = Value)
+write_csv(Total_Use2023_final, "Total_Use2023_final.csv")
+
+#pivot renewable use 2021
+Renewable_Use2021_final <- Renewable_Use2021 %>%
+  pivot_wider(
+    names_from = Energy_Source,
+    values_from = Usage
+  )
+
+write_csv(Renewable_Use2021_final, "Renewable_Use2021_final.csv")
+
+#pivot renewable use 2022
+Renewable_Use2022_final <- Renewable_Use2022 %>%
+  pivot_wider(
+    names_from = Energy_Source,
+    values_from = Usage
+  )
+
+write_csv(Renewable_Use2022_final, "Renewable_Use2022_final.csv")
+
+#pivot renewable use 2023
+Renewable_Use2023_final <- Renewable_Use2023 %>%
+  pivot_wider(
+    names_from = Energy_Source,
+    values_from = Usage
+  )
+
+write_csv(Renewable_Use2023_final, "Renewable_Use2023_final.csv")
 ```
 
 ## **Part 4: Mapping Visualization**
