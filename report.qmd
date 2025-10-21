@@ -149,6 +149,65 @@ Renewable_Use2023 <- Renewable_Use2023 %>%
 
 # create csv file
 write_csv(Renewable_Use2023, "Renewable_Use2023.csv")
+
+#TOTAL USE 2021 DATA
+Total_Use2021 <- read.csv("total-use-2021.csv")
+
+#tidy up Energy_Source rows
+Total_Use2021$Energy_Source <- Total_Use2021$Energy_Source %>%
+  str_replace_all("_", " ") %>%
+  str_to_lower() %>%
+  str_to_title() %>%
+  str_replace_all("[^A-Za-z ]", "")
+
+#change column names to state
+col_names <- names(Total_Use2021)
+col_names[2:(length(col_names) - 1)] <- state.name[match(col_names[2:(length(col_names) - 1)], state.abb)]
+names(Total_Use2021) <- col_names
+
+#new csv
+write_csv(Total_Use2021, "Total_Use2021.csv")
+
+#TOTAL USE 2022 DATA
+Total_Use2022 <- read.csv("total-use-2022.csv")
+
+#tidy up Energy_Source rows
+Total_Use2022$Energy_Source <- Total_Use2022$Energy_Source %>%
+  str_replace_all("_", " ") %>%
+  str_replace_all("-", " ") %>%
+  str_remove_all("\\(.*?\\)") %>% 
+  str_to_lower() %>%
+  str_to_title() %>%
+  str_replace_all("[^A-Za-z ]", "")
+
+#change column names to state
+col_names <- names(Total_Use2022)
+col_names[2:(length(col_names) - 1)] <- state.name[match(col_names[2:(length(col_names) - 1)], state.abb)]
+names(Total_Use2022) <- col_names
+
+#new csv
+write_csv(Total_Use2022, "Total_Use2022.csv")
+
+#TOTAL USE 2023 DATA
+Total_Use2023 <- read.csv("total-use-2023.csv")
+
+#tidy up Energy_Source rows
+Total_Use2023$Energy_Source <- Total_Use2023$Energy_Source %>%
+  str_replace_all("_", " ") %>%
+  str_replace_all("-", " ") %>%
+  str_replace_all("([a-z])([A-Z])", "\\1 \\2") %>%
+  str_remove_all("\\(.*?\\)") %>% 
+  str_to_lower() %>%
+  str_to_title() %>%
+  str_replace_all("[^A-Za-z ]", "")
+
+#change column names to state
+col_names <- names(Total_Use2023)
+col_names[2:(length(col_names) - 1)] <- state.name[match(col_names[2:(length(col_names) - 1)], state.abb)]
+names(Total_Use2023) <- col_names
+
+#new csv
+write_csv(Total_Use2023, "Total_Use2023.csv")
 ```
 
 ## **Part 3: Joining / Pivoting Datasets for Analysis**
