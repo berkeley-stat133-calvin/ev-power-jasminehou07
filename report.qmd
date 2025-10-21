@@ -25,7 +25,7 @@ setwd("~/Downloads/school/STAT 133/ev-power-jasminehou07/data")
 # AV ENERGY DATA
 AvgEnergyPrice <- read.csv("av-energy-price-2021-2023.csv")
 
-# convert to tibble (use the first column; it isn't named 'col' yet)
+# convert to tibble
 AvgEnergyPrice <- tibble(col = AvgEnergyPrice[[1]])
 
 # delete the first two junk lines
@@ -37,21 +37,118 @@ AvgEnergyPrice <- AvgEnergyPrice %>%
 
 # split the single column into 4 columns
 AvgEnergyPrice <- AvgEnergyPrice %>%
-  separate("col", into = c("state", "avgprice_2021", "avgprice_2022", "avgprice_2023"), sep = ",") %>%
+  separate("col", into = c("State", "Avgprice_2021", "Avgprice_2022", "Avgprice_2023"), sep = ",") %>%
   mutate(across(everything(), str_trim))
 
 # clean numbers, keep only digits and decimal points
 AvgEnergyPrice <- AvgEnergyPrice %>%
-  mutate(across(starts_with("avgprice_"),
+  mutate(across(starts_with("Avgprice_"),
                 ~ str_replace_all(.x, "[^0-9.]", "") %>%
                   as.numeric()))
 
-# change state abbreviations to full names
- AvgEnergyPrice <- AvgEnergyPrice %>%
-+   mutate(state = state.name[match(state, state.abb)])
+# change state abbreviations to full names but ignore the last row
+AvgEnergyPrice <- AvgEnergyPrice %>%
+  mutate(State = if_else(
+    row_number() == n(), State, state.name[match(State, state.abb)]
+  ))
 
-# Overwrite the same CSV file
+# create csv file
 write_csv(AvgEnergyPrice, "AvgEnergyPrice.csv")
+
+# EV REGISTRATION DATA
+#skip first 2 lines since they dont have data
+EV_Registrations <- read.csv("ev-registrations-by-state-2023.csv", skip = 2)
+
+#convert to tibble
+EV_Registrations <- as_tibble(EV_Registrations)
+
+# rename columns
+colnames(EV_Registrations) <- c("State", "Registrations")
+
+#fix random characters
+EV_Registrations <- EV_Registrations %>%
+  mutate(across("Registrations",
+                ~ str_replace_all(.x, "[^0-9.]", "") %>%
+                  as.numeric()))
+
+#create csv file
+write_csv(EV_Registrations, "EV_Registrations.csv")
+
+#RENEWABLE USE 2021 DATA
+Renewable_Use2021 <- read.csv("renew-use-2021.csv")
+
+# convert to tibble
+Renewable_Use2021 <- as_tibble(Renewable_Use2021)
+
+# rename columns
+colnames(Renewable_Use2021)[3] <- "Usage"
+
+# clean numbers, keep only digits and decimal points
+Renewable_Use2021 <- Renewable_Use2021 %>%
+  mutate(across("Usage",
+                ~ str_replace_all(.x, "[^0-9.]", "") %>%
+                  as.numeric()))
+
+# change state abbreviations to full names but ignore last 5 rows
+Renewable_Use2021 <- Renewable_Use2021 %>%
+  mutate(State = if_else(
+    row_number() > n() - 5, State, state.name[match(State, state.abb)]
+  ))
+
+# create csv file
+write_csv(Renewable_Use2021, "Renewable_Use2021.csv")
+
+#RENEWABLE USE 2022 DATA
+Renewable_Use2022 <- read.csv("renew-use-2022.csv")
+
+# convert to tibble
+Renewable_Use2022 <- as_tibble(Renewable_Use2022)
+
+# rename columns
+colnames(Renewable_Use2022)[3] <- "Usage"
+
+# clean numbers, keep only digits and decimal points
+Renewable_Use2021 <- Renewable_Use2021 %>%
+  mutate(across("Usage",
+                ~ str_replace_all(.x, "[^0-9.]", "") %>%
+                  as.numeric()))
+
+# change state abbreviations to full names but ignore last 5 rows
+Renewable_Use2022 <- Renewable_Use2022 %>%
+  mutate(State = if_else(
+    row_number() > n() - 5, State, state.name[match(State, state.abb)]
+  ))
+
+# create csv file
+write_csv(Renewable_Use2021, "Renewable_Use2022.csv")
+
+#RENEWABLE USE 2023 DATA
+Renewable_Use2023 <- read.csv("renew-use-2023.csv")
+
+# convert to tibble
+Renewable_Use2023 <- as_tibble(Renewable_Use2023)
+
+# rename columns
+colnames(Renewable_Use2023)[3] <- "Usage"
+
+# clean numbers, keep only digits and decimal points
+Renewable_Use2023 <- Renewable_Use2023 %>%
+  mutate(across("Usage",
+                ~ str_replace_all(.x, "[^0-9.]", "") %>%
+                  as.numeric()))
+
+#turn state abbreviations to uppercase
+Renewable_Use2023 <- Renewable_Use2023 %>%
+  mutate(State = toupper(State))
+
+# change state abbreviations to full names but ignore last 5 rows
+Renewable_Use2023 <- Renewable_Use2023 %>%
+  mutate(State = if_else(
+    row_number() > n() - 5, State, state.name[match(State, state.abb)]
+  ))
+
+# create csv file
+write_csv(Renewable_Use2023, "Renewable_Use2023.csv")
 ```
 
 ## **Part 3: Joining / Pivoting Datasets for Analysis**
