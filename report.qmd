@@ -11,7 +11,8 @@ format: typst
 library("stringr")
 library("dplyr")
 library("tidyverse")
-
+library("leaflet")
+library("maps")
 ```
 
 ## **Part 1:** **Defining Research Question**
@@ -299,16 +300,47 @@ T2022 <- read_csv("Total_Use2022_final.csv") %>% rename_with(~paste0(.x, "_2022"
 T2023 <- read_csv("Total_Use2023_final.csv") %>% rename_with(~paste0(.x, "_2023"), -State)
 
 # join all by state
-Total_Use_All <- R2021 %>%
-  left_join(R2022, by = "State") %>%
-  left_join(R2023, by = "State")
+Total_Use_All <- T2021 %>%
+  left_join(T2022, by = "State") %>%
+  left_join(T2023, by = "State")
 
 write_csv(Total_Use_All, "Total_Use_All.csv")
+
+# find totals for each renewable energy
+Renewable_All$renew_2021 <- with(Renewable_All,
+  Biomass_2021 + Geothermal_2021 + Hydropower_2021 + `Solar Energy_2021` + `Wind Energy_2021`
+)
+Renewable_All$renew_2022 <- with(Renewable_All,
+  Biomass_2022 + Geothermal_2022 + Hydropower_2022 + `Solar Energy_2022` + `Wind Energy_2022`
+)
+Renewable_All$renew_2023 <- with(Renewable_All,
+  Biomass_2023 + Geothermal_2023 + Hydropower_2023 + `Solar Energy_2023` + `Wind Energy_2023`
+)
+
+# row num the US total is in
+us_r <- nrow(Renewable_All)
+
+#find proportions for renewable energy usage
+Renewable_All$prop_2021 <- Renewable_All$renew_2021 / Renewable_All$renew_2021[us_idx]
+Renewable_All$prop_2022 <- Renewable_All$renew_2022 / Renewable_All$renew_2022[us_idx]
+Renewable_All$prop_2023 <- Renewable_All$renew_2023 / Renewable_All$renew_2023[us_idx]
+
+# row num the US total is in
+us_ev <- nrow(EV_Registrations)
+
+#find props for EV registrations
+EV_Registrations$prop <- EV_Registrations$Registrations / EV_Registrations$Registrations[us_idx]
+
+#remove the last row of US
+Renewable_All <- slice(Renewable_All, -nrow(Renewable_All))
+EV_Registrations <- slice(EV_Registrations, -nrow(EV_Registrations))
 
 ```
 
 ## **Part 4: Mapping Visualization**
 
 ```{r}
+
+
 
 ```
