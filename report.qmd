@@ -321,25 +321,58 @@ Renewable_All$renew_2023 <- with(Renewable_All,
 us_r <- nrow(Renewable_All)
 
 #find proportions for renewable energy usage
-Renewable_All$prop_2021 <- Renewable_All$renew_2021 / Renewable_All$renew_2021[us_idx]
-Renewable_All$prop_2022 <- Renewable_All$renew_2022 / Renewable_All$renew_2022[us_idx]
-Renewable_All$prop_2023 <- Renewable_All$renew_2023 / Renewable_All$renew_2023[us_idx]
+Renewable_All$prop_2021 <- Renewable_All$renew_2021 / Renewable_All$renew_2021[us_r]
+Renewable_All$prop_2022 <- Renewable_All$renew_2022 / Renewable_All$renew_2022[us_r]
+Renewable_All$prop_2023 <- Renewable_All$renew_2023 / Renewable_All$renew_2023[us_r]
 
 # row num the US total is in
 us_ev <- nrow(EV_Registrations)
 
 #find props for EV registrations
-EV_Registrations$prop <- EV_Registrations$Registrations / EV_Registrations$Registrations[us_idx]
+EV_Registrations$prop <- EV_Registrations$Registrations / EV_Registrations$Registrations[us_ev]
 
 #remove the last row of US
 Renewable_All <- slice(Renewable_All, -nrow(Renewable_All))
 EV_Registrations <- slice(EV_Registrations, -nrow(EV_Registrations))
 
+#merge renewable and EV data
+comparison <- Renewable_All %>%
+  select(State, prop_2021, prop_2022, prop_2023) %>%
+  left_join(EV_Registrations %>% select(State, prop), by = "State")
 ```
 
 ## **Part 4: Mapping Visualization**
 
 ```{r}
+states_map <- map_data("state")
+
+# make sure state names match
+comparison$region <- tolower(comparison$State)
+
+# merge with map coordinates
+map_2023 <- left_join(states_map, comparison, by = "region")
+
+# create the map
+ev_points <- map_2023 %>%
+  group_by(region) %>%
+  summarise(long = mean(long), lat = mean(lat), EV = mean(prop, na.rm = TRUE))
+
+# renewable energy is shown by color, ev registration is shown by circle size
+ggplot(map_2023, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = prop_2023), color = "white") +
+  geom_point(data = ev_points,
+             aes(x = long, y = lat, size = EV),
+             color = "red", alpha = 0.6, inherit.aes = FALSE) +
+  coord_fixed(1.3) +
+  scale_fill_gradient(low = "lightblue", high = "darkgreen", name = "Renewable Share (2023)") +
+  scale_size_continuous(name = "EV Registration Share", range = c(2, 10)) +
+  labs(title = "Renewable Energy & EV Registrations by State (2023)",
+       subtitle = "Color = renewable energy share; Circle size = EV registration share",
+       caption = "Data: Renewable_All & EV_Registrations (2023)") +
+  theme_minimal() +
+  theme(axis.text = element_blank(),
+        axis.title = element_blank(),
+        panel.grid = element_blank())
 
 
 
