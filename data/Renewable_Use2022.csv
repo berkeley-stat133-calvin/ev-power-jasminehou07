@@ -1,261 +1,261 @@
 State,Energy_Source,Usage
-Alaska,Biomass,3153
+Alaska,Biomass,3846
 Alaska,Geothermal,186
-Alaska,Hydropower,5763
-Alaska,Solar Energy,45
-Alaska,Wind Energy,451
-Alabama,Biomass,198543
+Alaska,Hydropower,5846
+Alaska,Solar Energy,57
+Alaska,Wind Energy,475
+Alabama,Biomass,193932
 Alabama,Geothermal,141
-Alabama,Hydropower,39309
-Alabama,Solar Energy,1823
+Alabama,Hydropower,34762
+Alabama,Solar Energy,3200
 Alabama,Wind Energy,0
-Arkansas,Biomass,72939
+Arkansas,Biomass,74816
 Arkansas,Geothermal,808
-Arkansas,Hydropower,13746
-Arkansas,Solar Energy,2221
+Arkansas,Hydropower,11835
+Arkansas,Solar Energy,3365
 Arkansas,Wind Energy,0
-Arizona,Biomass,35287
+Arizona,Biomass,36364
 Arizona,Geothermal,345
-Arizona,Hydropower,20379
-Arizona,Solar Energy,37795
-Arizona,Wind Energy,5460
-California,Biomass,462829
-California,Geothermal,40106
-California,Hydropower,50080
-California,Solar Energy,205221
-California,Wind Energy,51784
-Colorado,Biomass,36334
+Arizona,Hydropower,18075
+Arizona,Solar Energy,41092
+Arizona,Wind Energy,5338
+California,Biomass,497652
+California,Geothermal,40288
+California,Hydropower,60202
+California,Solar Energy,232908
+California,Wind Energy,49945
+Colorado,Biomass,38711
 Colorado,Geothermal,759
-Colorado,Hydropower,5453
-Colorado,Solar Energy,9801
-Colorado,Wind Energy,51609
-Connecticut,Biomass,42781
+Colorado,Hydropower,4588
+Colorado,Solar Energy,13159
+Colorado,Wind Energy,57701
+Connecticut,Biomass,41972
 Connecticut,Geothermal,21
-Connecticut,Hydropower,1629
-Connecticut,Solar Energy,4831
+Connecticut,Hydropower,1065
+Connecticut,Solar Energy,5982
 Connecticut,Wind Energy,44
-District of Columbia,Biomass,1897
+District of Columbia,Biomass,1923
 District of Columbia,Geothermal,22
 District of Columbia,Hydropower,0
-District of Columbia,Solar Energy,568
+District of Columbia,Solar Energy,678
 District of Columbia,Wind Energy,0
-Delaware,Biomass,5995
+Delaware,Biomass,6160
 Delaware,Geothermal,430
 Delaware,Hydropower,0
-Delaware,Solar Energy,709
-Delaware,Wind Energy,17
-Florida,Biomass,221885
+Delaware,Solar Energy,797
+Delaware,Wind Energy,15
+Florida,Biomass,219011
 Florida,Geothermal,10056
-Florida,Hydropower,858
-Florida,Solar Energy,64491
+Florida,Hydropower,788
+Florida,Solar Energy,74750
 Florida,Wind Energy,0
-Georgia,Biomass,258089
+Georgia,Biomass,256735
 Georgia,Geothermal,315
-Georgia,Hydropower,12491
-Georgia,Solar Energy,18218
+Georgia,Hydropower,10840
+Georgia,Solar Energy,25348
 Georgia,Wind Energy,0
-Hawaii,Biomass,8816
-Hawaii,Geothermal,635
-Hawaii,Hydropower,392
-Hawaii,Solar Energy,8046
-Hawaii,Wind Energy,2245
-Iowa,Biomass,256935
+Hawaii,Biomass,8806
+Hawaii,Geothermal,719
+Hawaii,Hydropower,376
+Hawaii,Solar Energy,8437
+Hawaii,Wind Energy,2134
+Iowa,Biomass,258515
 Iowa,Geothermal,1281
-Iowa,Hydropower,3344
-Iowa,Solar Energy,1647
-Iowa,Wind Energy,126579
-Idaho,Biomass,33826
-Idaho,Geothermal,1819
-Idaho,Hydropower,27280
-Idaho,Solar Energy,2358
-Idaho,Wind Energy,9145
-Illinois,Biomass,150154
+Iowa,Hydropower,3446
+Iowa,Solar Energy,2404
+Iowa,Wind Energy,156138
+Idaho,Biomass,37284
+Idaho,Geothermal,1814
+Idaho,Hydropower,28523
+Idaho,Solar Energy,2453
+Idaho,Wind Energy,8331
+Illinois,Biomass,155145
 Illinois,Geothermal,2042
-Illinois,Hydropower,439
-Illinois,Solar Energy,6190
-Illinois,Wind Energy,65282
-Indiana,Biomass,121697
+Illinois,Hydropower,393
+Illinois,Solar Energy,10800
+Illinois,Wind Energy,80161
+Indiana,Biomass,126202
 Indiana,Geothermal,4647
-Indiana,Hydropower,1321
-Indiana,Solar Energy,2852
-Indiana,Wind Energy,26808
-Kansas,Biomass,46363
+Indiana,Hydropower,1265
+Indiana,Solar Energy,4803
+Indiana,Wind Energy,34070
+Kansas,Biomass,48860
 Kansas,Geothermal,974
-Kansas,Hydropower,102
-Kansas,Solar Energy,444
-Kansas,Wind Energy,87667
-Kentucky,Biomass,51928
+Kansas,Hydropower,81
+Kansas,Solar Energy,579
+Kansas,Wind Energy,101294
+Kentucky,Biomass,58773
 Kentucky,Geothermal,2712
-Kentucky,Hydropower,16638
-Kentucky,Solar Energy,465
+Kentucky,Hydropower,15456
+Kentucky,Solar Energy,575
 Kentucky,Wind Energy,0
-Louisiana,Biomass,128794
+Louisiana,Biomass,131549
 Louisiana,Geothermal,1842
-Louisiana,Hydropower,3785
-Louisiana,Solar Energy,1484
+Louisiana,Hydropower,3126
+Louisiana,Solar Energy,1692
 Louisiana,Wind Energy,0
-Massachusetts,Biomass,55621
+Massachusetts,Biomass,57545
 Massachusetts,Geothermal,859
-Massachusetts,Hydropower,3813
-Massachusetts,Solar Energy,14366
-Massachusetts,Wind Energy,712
-Maryland,Biomass,37402
+Massachusetts,Hydropower,2993
+Massachusetts,Solar Energy,18568
+Massachusetts,Wind Energy,736
+Maryland,Biomass,35988
 Maryland,Geothermal,570
-Maryland,Hydropower,7224
-Maryland,Solar Energy,5772
-Maryland,Wind Energy,1765
-Maine,Biomass,76566
+Maryland,Hydropower,6072
+Maryland,Solar Energy,6928
+Maryland,Wind Energy,1698
+Maine,Biomass,71303
 Maine,Geothermal,72
-Maine,Hydropower,8670
-Maine,Solar Energy,1153
-Maine,Wind Energy,8681
-Michigan,Biomass,155433
+Maine,Hydropower,10452
+Maine,Solar Energy,2771
+Maine,Wind Energy,9268
+Michigan,Biomass,161389
 Michigan,Geothermal,5193
-Michigan,Hydropower,4571
-Michigan,Solar Energy,2616
-Michigan,Wind Energy,26262
-Minnesota,Biomass,163547
+Michigan,Hydropower,4729
+Michigan,Solar Energy,4276
+Michigan,Wind Energy,31224
+Minnesota,Biomass,166428
 Minnesota,Geothermal,1075
-Minnesota,Hydropower,2317
-Minnesota,Solar Energy,7304
-Minnesota,Wind Energy,41870
-Missouri,Biomass,58533
+Minnesota,Hydropower,3243
+Minnesota,Solar Energy,7531
+Minnesota,Wind Energy,51491
+Missouri,Biomass,62209
 Missouri,Geothermal,352
-Missouri,Hydropower,5792
-Missouri,Solar Energy,1906
-Missouri,Wind Energy,22295
-Mississippi,Biomass,63655
+Missouri,Hydropower,4721
+Missouri,Solar Energy,2355
+Missouri,Wind Energy,25674
+Mississippi,Biomass,63847
 Mississippi,Geothermal,958
 Mississippi,Hydropower,0
-Mississippi,Solar Energy,1520
+Mississippi,Solar Energy,1809
 Mississippi,Wind Energy,0
-Montana,Biomass,12290
+Montana,Biomass,12554
 Montana,Geothermal,337
-Montana,Hydropower,31590
-Montana,Solar Energy,269
-Montana,Wind Energy,11849
-North Carolina,Biomass,138045
+Montana,Hydropower,33731
+Montana,Solar Energy,299
+Montana,Wind Energy,13723
+North Carolina,Biomass,138609
 North Carolina,Geothermal,967
-North Carolina,Hydropower,19833
-North Carolina,Solar Energy,36370
-North Carolina,Wind Energy,1756
-North Dakota,Biomass,33921
+North Carolina,Hydropower,15990
+North Carolina,Solar Energy,40733
+North Carolina,Wind Energy,1866
+North Dakota,Biomass,33480
 North Dakota,Geothermal,978
-North Dakota,Hydropower,6787
-North Dakota,Solar Energy,9
-North Dakota,Wind Energy,50959
-Nebraska,Biomass,120181
+North Dakota,Hydropower,6112
+North Dakota,Solar Energy,10
+North Dakota,Wind Energy,55445
+Nebraska,Biomass,120119
 Nebraska,Geothermal,1212
-Nebraska,Hydropower,3832
-Nebraska,Solar Energy,322
-Nebraska,Wind Energy,32728
-New Hampshire,Biomass,32487
+Nebraska,Hydropower,3608
+Nebraska,Solar Energy,404
+Nebraska,Wind Energy,43039
+New Hampshire,Biomass,33184
 New Hampshire,Geothermal,29
-New Hampshire,Hydropower,3497
-New Hampshire,Solar Energy,745
-New Hampshire,Wind Energy,1720
-New Jersey,Biomass,53825
+New Hampshire,Hydropower,4099
+New Hampshire,Solar Energy,906
+New Hampshire,Wind Energy,1646
+New Jersey,Biomass,54827
 New Jersey,Geothermal,466
-New Jersey,Hydropower,62
-New Jersey,Solar Energy,15619
-New Jersey,Wind Energy,67
-New Mexico,Biomass,17390
-New Mexico,Geothermal,542
-New Mexico,Hydropower,419
-New Mexico,Solar Energy,7757
-New Mexico,Wind Energy,36101
-Nevada,Biomass,13735
-Nevada,Geothermal,14914
-Nevada,Hydropower,6634
-Nevada,Solar Energy,27204
-Nevada,Wind Energy,1160
-New York,Biomass,135921
+New Jersey,Hydropower,18
+New Jersey,Solar Energy,17803
+New Jersey,Wind Energy,74
+New Mexico,Biomass,18132
+New Mexico,Geothermal,528
+New Mexico,Hydropower,412
+New Mexico,Solar Energy,8962
+New Mexico,Wind Energy,49251
+Nevada,Biomass,14392
+Nevada,Geothermal,14913
+Nevada,Hydropower,5752
+Nevada,Solar Energy,36601
+Nevada,Wind Energy,1077
+New York,Biomass,140237
 New York,Geothermal,1185
-New York,Hydropower,98148
-New York,Solar Energy,14542
-New York,Wind Energy,14182
-Ohio,Biomass,129100
+New York,Hydropower,93596
+New York,Solar Energy,19281
+New York,Wind Energy,15584
+Ohio,Biomass,134824
 Ohio,Geothermal,3435
-Ohio,Hydropower,1973
-Ohio,Solar Energy,3524
-Ohio,Wind Energy,8826
-Oklahoma,Biomass,56130
+Ohio,Hydropower,1730
+Ohio,Solar Energy,4531
+Ohio,Wind Energy,10761
+Oklahoma,Biomass,54864
 Oklahoma,Geothermal,24
-Oklahoma,Hydropower,9438
-Oklahoma,Solar Energy,466
-Oklahoma,Wind Energy,111028
-Oregon,Biomass,89886
-Oregon,Geothermal,1856
-Oregon,Hydropower,94374
-Oregon,Solar Energy,7437
-Oregon,Wind Energy,31990
-Pennsylvania,Biomass,151173
+Oklahoma,Hydropower,6038
+Oklahoma,Solar Energy,598
+Oklahoma,Wind Energy,128130
+Oregon,Biomass,93054
+Oregon,Geothermal,1842
+Oregon,Hydropower,106810
+Oregon,Solar Energy,8257
+Oregon,Wind Energy,27805
+Pennsylvania,Biomass,154330
 Pennsylvania,Geothermal,2162
-Pennsylvania,Hydropower,10696
-Pennsylvania,Solar Energy,3768
-Pennsylvania,Wind Energy,11789
-Rhode Island,Biomass,8808
+Pennsylvania,Hydropower,9051
+Pennsylvania,Solar Energy,4319
+Pennsylvania,Wind Energy,12188
+Rhode Island,Biomass,9395
 Rhode Island,Geothermal,57
-Rhode Island,Hydropower,15
-Rhode Island,Solar Energy,2331
-Rhode Island,Wind Energy,587
-South Carolina,Biomass,125195
+Rhode Island,Hydropower,25
+Rhode Island,Solar Energy,3073
+Rhode Island,Wind Energy,714
+South Carolina,Biomass,127166
 South Carolina,Geothermal,648
-South Carolina,Hydropower,8679
-South Carolina,Solar Energy,9273
+South Carolina,Hydropower,7440
+South Carolina,Solar Energy,10073
 South Carolina,Wind Energy,0
-South Dakota,Biomass,76673
+South Dakota,Biomass,78433
 South Dakota,Geothermal,1868
-South Dakota,Hydropower,17000
-South Dakota,Solar Energy,19
-South Dakota,Wind Energy,31822
-Tennessee,Biomass,96952
+South Dakota,Hydropower,14530
+South Dakota,Solar Energy,20
+South Dakota,Wind Energy,35127
+Tennessee,Biomass,82232
 Tennessee,Geothermal,213
-Tennessee,Hydropower,37093
-Tennessee,Solar Energy,1487
-Tennessee,Wind Energy,96
-Texas,Biomass,249311
+Tennessee,Hydropower,31384
+Tennessee,Solar Energy,2593
+Tennessee,Wind Energy,51
+Texas,Biomass,268045
 Texas,Geothermal,2478
-Texas,Hydropower,3693
-Texas,Solar Energy,59311
-Texas,Wind Energy,339406
-Utah,Biomass,15136
-Utah,Geothermal,2240
-Utah,Hydropower,1684
-Utah,Solar Energy,14174
-Utah,Wind Energy,2816
-Virginia,Biomass,155498
+Texas,Hydropower,2116
+Texas,Solar Energy,87388
+Texas,Wind Energy,391653
+Utah,Biomass,14627
+Utah,Geothermal,2389
+Utah,Hydropower,2031
+Utah,Solar Energy,15854
+Utah,Wind Energy,2468
+Virginia,Biomass,162230
 Virginia,Geothermal,1701
-Virginia,Hydropower,4455
-Virginia,Solar Energy,12792
-Virginia,Wind Energy,169
-Vermont,Biomass,15197
+Virginia,Hydropower,3880
+Virginia,Solar Energy,17653
+Virginia,Wind Energy,174
+Vermont,Biomass,15188
 Vermont,Geothermal,29
-Vermont,Hydropower,3729
-Vermont,Solar Energy,1322
-Vermont,Wind Energy,1154
-Washington,Biomass,116292
+Vermont,Hydropower,3892
+Vermont,Solar Energy,1504
+Vermont,Wind Energy,1396
+Washington,Biomass,118813
 Washington,Geothermal,1136
-Washington,Hydropower,243546
-Washington,Solar Energy,1354
-Washington,Wind Energy,31724
-Wisconsin,Biomass,130446
+Washington,Hydropower,269263
+Washington,Solar Energy,1754
+Washington,Wind Energy,27504
+Wisconsin,Biomass,133538
 Wisconsin,Geothermal,615
-Wisconsin,Hydropower,7318
-Wisconsin,Solar Energy,2119
-Wisconsin,Wind Energy,5437
-West Virginia,Biomass,14909
+Wisconsin,Hydropower,6793
+Wisconsin,Solar Energy,3749
+Wisconsin,Wind Energy,6195
+West Virginia,Biomass,15724
 West Virginia,Geothermal,32
-West Virginia,Hydropower,5816
-West Virginia,Solar Energy,129
-West Virginia,Wind Energy,5542
-Wyoming,Biomass,4876
+West Virginia,Hydropower,5620
+West Virginia,Solar Energy,166
+West Virginia,Wind Energy,6848
+Wyoming,Biomass,4790
 Wyoming,Geothermal,663
-Wyoming,Hydropower,2697
-Wyoming,Solar Energy,674
-Wyoming,Wind Energy,28824
-US,Biomass,4752482
-US,Geothermal,118007
-US,Hydropower,858407
-US,Solar Energy,626863
-US,Wind Energy,1290407
+Wyoming,Hydropower,2541
+Wyoming,Solar Energy,715
+Wyoming,Wind Energy,33370
+US,Biomass,4873241
+US,Geothermal,118389
+US,Hydropower,869339
+US,Solar Energy,764563
+US,Wind Energy,1481823

@@ -1,5 +1,5 @@
 ---
-title: "EV Power - Lab 4 Project Report"
+title: "Renewable Energy Usage and EV Registration Trends"
 format: typst
 ---
 
@@ -8,8 +8,6 @@ format: typst
 ## **Part 0: libraries**
 
 ```{r}
-library("stringr")
-library("dplyr")
 library("tidyverse")
 library("leaflet")
 library("maps")
@@ -123,7 +121,7 @@ Renewable_Use2022 <- Renewable_Use2022 %>%
     row_number() %in% 36:40 ~ "District of Columbia", row_number() > n() - 5 ~ State, TRUE ~ state.name[match(State, state.abb)]))
 
 # create csv file
-write_csv(Renewable_Use2021, "Renewable_Use2022.csv")
+write_csv(Renewable_Use2022, "Renewable_Use2022.csv")
 
 #RENEWABLE USE 2023 DATA
 Renewable_Use2023 <- read.csv("renew-use-2023.csv")
@@ -343,7 +341,8 @@ comparison <- Renewable_All %>%
 
 ## **Part 4: Mapping Visualization**
 
-```{r}
+```{r, fig.width=10, fig.height=8}
+
 states_map <- map_data("state")
 
 # make sure state names match
@@ -374,6 +373,8 @@ ggplot(map_2023, aes(x = long, y = lat, group = group)) +
         axis.title = element_blank(),
         panel.grid = element_blank())
 
-
-
 ```
+
+**Findings**
+
+Based on the combined dataset and map visualization, there is a relationship between renewable energy usage and EV registrations but it's not very strong and varies by region. States on the west coast have both high renewable energy and EV registration. THis shows that states that invest in more renewables may also encourage EV. However, states like Iowa, South Dakota, and Idaho have a high renewable energy proportion but have low EV registrations. On the other hand, states like Florida, Texas, and New York have high EV registrations but lower renewable energy. Overall, there is not a clear one-to-one relationship between renewable energy and EV registrations.
